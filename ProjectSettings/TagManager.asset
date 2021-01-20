@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cars
+  - Obstacles
+  - Entrances
+  - Exits
   layers:
   - Default
   - TransparentFX

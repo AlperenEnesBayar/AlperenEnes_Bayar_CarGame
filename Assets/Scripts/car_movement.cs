@@ -11,9 +11,8 @@ public class car_movement : MonoBehaviour
     [SerializeField]
     float steering_speed = 1f; // Car's steering speed
     float total_steering, direction; // Values for calculating direction vector
-
-
-
+    public bool isCrashed = false;
+    public bool isDone = false;
 
 
     void Start()
@@ -41,5 +40,18 @@ public class car_movement : MonoBehaviour
         rigidbodyCar.rotation += total_steering * steering_speed * rigidbodyCar.velocity.magnitude * direction;
         rigidbodyCar.AddRelativeForce(-Vector2.right * rigidbodyCar.velocity.magnitude * total_steering / 2);
 
+    }
+
+    public void Win()
+    {
+        isDone = true;
+    }
+
+    public void Crashed()
+    {
+        car_speed = 0f;
+        steering_speed = 0f;
+        isDone = true;
+        isCrashed = true;
     }
 }
