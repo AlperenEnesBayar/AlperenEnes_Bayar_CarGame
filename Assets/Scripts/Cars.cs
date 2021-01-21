@@ -7,16 +7,29 @@ public class Cars : MonoBehaviour
     Rigidbody2D rigidbodyCar; // Referance for car's rigidbody
     [SerializeField]
     private ParticleSystem exhaust;
+    
 
-    private float car_speed = 15f; // Car's frontal speed
-    private float steering_speed = 1f; // Car's steering speed
+    private float starting_car_speed = 15f; // Car's frontal speed
+    private float starting_steering_speed = 1f; // Car's steering speed
+    private float car_speed; // Car's frontal speed
+    private float steering_speed; // Car's steering speed
     private bool isCrashed = false;
     private bool isDone = false;
-    private RigidbodyConstraints2D originalConstraints; // For Pause|UnPause reasons 
+    private bool isNPC;
+    private RigidbodyConstraints2D originalConstraints; // For Pause|UnPause reasons
+
+    private List<Vector3> savedPositions;
+    private List<Quaternion> savedRotations;
+    private int savedTime = 0;
+
+    private Vector3 snapPosition;
+    private Quaternion snapRotation;
 
     // Getters and Setters
+    public float Starting_car_speed { get => starting_car_speed; set => starting_car_speed = value; }
+    public float Starting_steering_speed { get => starting_steering_speed; set => starting_steering_speed = value; }
     public float Car_speed { get => car_speed; set => car_speed = value; }
-    public float Steering_speed { get => steering_speed; set => steering_speed = value; }
+    public float Streering_speed { get => steering_speed; set => steering_speed = value; }
     public Rigidbody2D RigidbodyCar { get => rigidbodyCar; set => rigidbodyCar = value; }
     public bool IsCrashed { get => isCrashed; set => isCrashed = value; }
     public bool IsDone { get => isDone; set => isDone = value; }
@@ -24,8 +37,19 @@ public class Cars : MonoBehaviour
     //Start
     void Start()
     {
-        rigidbodyCar = GetComponent<Rigidbody2D>(); // Initialization for car's rigidbody
+        // Initialization
+
+        rigidbodyCar = GetComponent<Rigidbody2D>();
+        snapPosition = this.transform.position;
+        snapRotation = this.transform.rotation;
+        car_speed = starting_car_speed;
+        steering_speed = starting_steering_speed;
+        savedPositions = new List<Vector3>();
+        savedRotations = new List<Quaternion>();
+
+        // For Pause|UnPause reasons
         originalConstraints = rigidbodyCar.constraints;
+
     }
 
     // If car reaches the exit
@@ -41,12 +65,15 @@ public class Cars : MonoBehaviour
         isDone = true;
         isCrashed = true;
     }
-    public void Restart()
+
+    public bool IsNPC()
     {
-        car_speed = 15f;
-        steering_speed = 1f;
-        isDone = false;
-        isCrashed = false;
+        return isNPC;
+    }
+
+    public void setNPC(bool npc)
+    {
+        isNPC = npc;
     }
 
     public void Freeze()
@@ -62,5 +89,56 @@ public class Cars : MonoBehaviour
     public void FireExhaust()
     {
         exhaust.Play();
+    } 
+
+    public void ResetSavedTime()
+    {
+        savedTime = 0;
     }
+
+    public void TurnStartingPosition()
+    {
+        this.transform.position = snapPosition;
+        this.transform.rotation = snapRotation;
+        isCrashed = false;
+        isDone = false;
+        car_speed = starting_car_speed;
+        steering_speed = starting_steering_speed;
+    }
+
+    public void SaveAction(Vector3 pos, Quaternion rot)
+    {
+        savedPositions.Add(pos);
+        savedRotations.Add(rot);
+    }
+
+    public Vector3 ReturnPositionAtTime()
+    {
+        return savedPositions[savedTime];
+    }
+
+    public Quaternion ReturnRotationAtTime()
+    {
+
+        return savedRotations[savedTime];
+    }
+    
+    public bool isActionRemain()
+    {
+        if(savedTime < savedPositions.Count)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void NextAction()
+    {
+        savedTime += 1;
+    }
+
+
+
+
+
 }
