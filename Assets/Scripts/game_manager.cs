@@ -43,14 +43,11 @@ public class game_manager : MonoBehaviour
     }
 
     void Update()
-    {
-       
-
-        // Checks is game ended
-        if (current_cars_script.IsDone)
+    {     
+        if (current_cars_script.IsDone)  // Checks is game ended
         {
             
-            if(current_cars_script.IsCrashed) // If car crashed shows menu
+            if(current_cars_script.IsCrashed)  // If car crashed shows menu
             {
                 // Restart the game or go menu
                 
@@ -60,10 +57,11 @@ public class game_manager : MonoBehaviour
             {
                 if (current_scenario < 8) 
                 {
-                    // Go next scenario
+                    // Passes the car's controls to PC
                     current_cars_script.TurnStartingPosition();
                     current_cars_script.setNPC(true);
 
+                    // Go next scenario
                     current_scenario += 1;
                     Start_Scenario();
                 }
@@ -78,22 +76,27 @@ public class game_manager : MonoBehaviour
 
     void Start_Scenario()
     {
-        Close_Everything();
+        Close_Everything();  // Restarts Everything
 
+        // Inıtilize the current variables
         current_entrance = Entrences[current_scenario];
         current_exit = Exits[current_scenario];
         current_car = Cars[current_scenario];
 
+        // Activates start and end points
         current_entrance.SetActive(true);
         current_exit.SetActive(true);
         
+        // Activates the current car and spawn in start point
         current_car.transform.position = current_entrance.transform.position;
         current_car.SetActive(true);
         current_cars_script = current_car.GetComponent<Cars>();
 
+        // Moves the camera to car
         virtualCamera.Follow = current_car.transform;
         virtualCamera.LookAt = current_car.transform;
 
+        // Activates NPC cars
         int it = current_scenario;
         while (it > 0)
         {
@@ -103,6 +106,7 @@ public class game_manager : MonoBehaviour
             Cars[it].GetComponent<Cars>().ResetSavedTime();
         }
 
+        // Starts countdown timer 
         episode_Timer.ResetTimer();
         count_Down_Controller.StartCountDownTimer();
     }
@@ -128,7 +132,7 @@ public class game_manager : MonoBehaviour
         episode_Timer.StopTimer();
     }
 
-
+    // Returns coordinates exit by Car Name
     public Transform ReturnExitsTransformByCar(string Car)
     {
         int index = 0;
@@ -144,16 +148,20 @@ public class game_manager : MonoBehaviour
 
         return null;
     }
+
+    // Self-Explanatory
     public bool CheckIsDone()
     {
         return current_cars_script.IsDone;
     }
 
+    // Self-Explanatory
     public void Pause_The_Game()
     {
         current_cars_script.Freeze();
     }
 
+    // Self-Explanatory
     public void Resume_The_Game()
     {
         current_cars_script.UnFreeze();  

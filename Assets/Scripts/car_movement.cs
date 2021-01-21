@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* I'm using FixedUpdate() instead of Update() method for car movement, because: 
+   *
+   * "It's for this reason that FixedUpdate should be used when applying forces,
+   * torques, or other physics-related functions - because you know it will 
+   * be executed exactly in sync with the physics engine itself."
+   * 
+  */
 
 public class car_movement : MonoBehaviour
 {
@@ -11,16 +18,7 @@ public class car_movement : MonoBehaviour
     game_manager gm;
     public bool isNPC;
     float total_steering, direction; // Values for calculating direction vector
-    
-
-
-    /* I'm using FixedUpdate() instead of Update() method for car movement, because: 
-     *
-     * "It's for this reason that FixedUpdate should be used when applying forces,
-     * torques, or other physics-related functions - because you know it will 
-     * be executed exactly in sync with the physics engine itself."
-     * 
-    */
+  
     void FixedUpdate()
     {
         if(car.IsNPC())
@@ -48,8 +46,8 @@ public class car_movement : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
-                float middle = Screen.width / 2;
-                if (Input.mousePosition.x < middle)
+                float middle = Screen.width / 2; // Divides Screen Left/Right
+                if (Input.mousePosition.x < middle) 
                 {
                     total_steering = 1;
                 }

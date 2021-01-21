@@ -34,11 +34,10 @@ public class Cars : MonoBehaviour
     public bool IsCrashed { get => isCrashed; set => isCrashed = value; }
     public bool IsDone { get => isDone; set => isDone = value; }
 
-    //Start
+
     void Start()
     {
         // Initialization
-
         rigidbodyCar = GetComponent<Rigidbody2D>();
         snapPosition = this.transform.position;
         snapRotation = this.transform.rotation;
@@ -58,6 +57,7 @@ public class Cars : MonoBehaviour
         isDone = true;
     }
 
+    // If car reaches an obstacle
     public void Crashed()
     {
         car_speed = 0f;
@@ -66,36 +66,43 @@ public class Cars : MonoBehaviour
         isCrashed = true;
     }
 
+    // Self-Explanatory
     public bool IsNPC()
     {
         return isNPC;
     }
 
+    // Self-Explanatory
     public void setNPC(bool npc)
     {
         isNPC = npc;
     }
 
+    // Freezes the car
     public void Freeze()
     {
         rigidbodyCar.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
     }
 
+    // Unfreezes the car
     public void UnFreeze()
     {
         rigidbodyCar.constraints = originalConstraints;
     }
 
+    // Starts particle effect
     public void FireExhaust()
     {
         exhaust.Play();
     } 
 
+    // Resets NPC animations
     public void ResetSavedTime()
     {
         savedTime = 0;
     }
 
+    // Resets car to starting values
     public void TurnStartingPosition()
     {
         this.transform.position = snapPosition;
@@ -106,23 +113,27 @@ public class Cars : MonoBehaviour
         steering_speed = starting_steering_speed;
     }
 
+    // Save actions for NPC Mode
     public void SaveAction(Vector3 pos, Quaternion rot)
     {
         savedPositions.Add(pos);
         savedRotations.Add(rot);
     }
 
+    // For NPC mode
     public Vector3 ReturnPositionAtTime()
     {
         return savedPositions[savedTime];
     }
 
+    // For NPC mode
     public Quaternion ReturnRotationAtTime()
     {
 
         return savedRotations[savedTime];
     }
-    
+
+    // For NPC mode
     public bool isActionRemain()
     {
         if(savedTime < savedPositions.Count)
@@ -132,6 +143,7 @@ public class Cars : MonoBehaviour
         return false;
     }
 
+    // For NPC mode
     public void NextAction()
     {
         savedTime += 1;
