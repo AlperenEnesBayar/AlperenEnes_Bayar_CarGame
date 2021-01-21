@@ -3,22 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class game_manager : MonoBehaviour
 {
-    /*          scenarios
-     *          _______
-     *    Number   Entrance   Exit  CarColor
-     *   ______________________________________
-     *     1          1        2     Blue (1)
-     *     2          2        3     Purple (2)
-     *     3          3        1     Orange (3)
-     *     4          5        2     Pink (4)
-     *     5          4        5     Red (5)
-     *     6          6        4     Yellow (6)
-     *     7          1        6     Olive (7)
-     *     8          3        6     Green (8)
-     */
 
+    // Level Design Variables
+    [Header("Level Design")]
+    [Tooltip("Entrance's, Exit's and Car's lenght must be equal.")]
     [SerializeField]
     GameObject[] Entrences;
     [SerializeField]
@@ -26,51 +18,41 @@ public class game_manager : MonoBehaviour
     [SerializeField]
     GameObject[] Cars;
     [SerializeField]
+    [Tooltip("Focus Camera for Cars")]
     CinemachineVirtualCamera virtualCamera;
+    [SerializeField]
+    [Tooltip("UI countdowntimer elements")]
+    count_down_controller count_Down_Controller;
 
-    // [scenario][Entrance, Exit, Car]
-    int[][] scenarios = new int[][]
-    {
-        new int[] {1, 2, 1},
-        new int[] {2, 3, 2},
-        new int[] {3, 1, 3},
-        new int[] {5, 2, 4},
-        new int[] {4, 5, 5},
-        new int[] {6, 4, 6},
-        new int[] {1, 6, 7},
-        new int[] {3, 6, 8}
-
-    };
-
+    // Current Scenario's informations
     int current_scenario = 0;
     GameObject current_entrance;
     GameObject current_exit;
     GameObject current_car;
-    car_movement current_cars_script;
+    Cars current_cars_script;
 
 
     void Start()
     {
-        // scenario-1
+        // Start's with first scenario
         Start_Scenario();
 
     }
 
-
     void Update()
     {
-        
-
-        if (current_cars_script.isDone)
+        // Checks is game ended
+        if (current_cars_script.IsDone)
         {
-            if(current_cars_script.isCrashed)
+            
+            if(current_cars_script.IsCrashed) // If car crashed shows menu
             {
                 // Restart the game or go menu
 
             }
-            else
+            else // If not then, passes the next scenario
             {
-                if (current_scenario < 8)
+                if (current_scenario < 8) 
                 {
                     // Go next scenario
                     Close_Everything();
@@ -87,15 +69,12 @@ public class game_manager : MonoBehaviour
     }
 
     void Start_Scenario()
-    {   
-        int entrance_number = scenarios[current_scenario][0] - 1;
-        int exit_number = scenarios[current_scenario][1] - 1;
-        int car_number = scenarios[current_scenario][2] - 1;
-
+    {
         Close_Everything();
-        current_entrance = Entrences[entrance_number];
-        current_exit = Exits[exit_number];
-        current_car = Cars[car_number];
+        
+        current_entrance = Entrences[current_scenario];
+        current_exit = Exits[current_scenario];
+        current_car = Cars[current_scenario];
 
 
         current_entrance.SetActive(true);
@@ -104,12 +83,12 @@ public class game_manager : MonoBehaviour
         
         current_car.transform.position = current_entrance.transform.position;
         current_car.SetActive(true);
-        current_cars_script = current_car.GetComponent<car_movement>();
+        current_cars_script = current_car.GetComponent<Cars>();
 
         virtualCamera.Follow = current_car.transform;
         virtualCamera.LookAt = current_car.transform;
-        
 
+        count_Down_Controller.StartCountDownTimer();
     }
 
     // Deactivate all Entrances, Exits and Cars
@@ -129,5 +108,22 @@ public class game_manager : MonoBehaviour
         {
             car.SetActive(false);
         }
+    }
+
+    public void Restart_The_Game()
+    {
+        current_cars_script.Restart();
+        current_scenario = 0;
+        Start_Scenario();
+    }
+
+    public void Pause_The_Game()
+    {
+        current_cars_script.Freeze();
+    }
+
+    public void Resume_The_Game()
+    {
+        current_cars_script.UnFreeze();
     }
 }

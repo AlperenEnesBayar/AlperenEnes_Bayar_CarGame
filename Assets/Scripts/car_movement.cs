@@ -2,23 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class car_movement : MonoBehaviour
 {
-    Rigidbody2D rigidbodyCar; // Referance for car's rigidbody
-
     [SerializeField]
-    float car_speed = 15f; // Car's frontal speed
-    [SerializeField]
-    float steering_speed = 1f; // Car's steering speed
+    Cars car; // Car's main class's script
     float total_steering, direction; // Values for calculating direction vector
-    public bool isCrashed = false;
-    public bool isDone = false;
 
-
-    void Start()
-    {
-        rigidbodyCar = GetComponent<Rigidbody2D>(); // Initialization for car's rigidbody
-    }
 
     /* I'm using FixedUpdate() instead of Update() method for car movement, because: 
      *
@@ -32,26 +22,25 @@ public class car_movement : MonoBehaviour
     void FixedUpdate()
     {
         // Automatic drives front direction
-        rigidbodyCar.AddRelativeForce(Vector2.up * car_speed);
+        car.RigidbodyCar.AddRelativeForce(Vector2.up * car.Car_speed);
 
-        // Right and left steering
-        direction = Mathf.Sign(Vector2.Dot(rigidbodyCar.velocity, rigidbodyCar.GetRelativeVector(Vector2.up)));
-        total_steering = -Input.GetAxis("Horizontal");
-        rigidbodyCar.rotation += total_steering * steering_speed * rigidbodyCar.velocity.magnitude * direction;
-        rigidbodyCar.AddRelativeForce(-Vector2.right * rigidbodyCar.velocity.magnitude * total_steering / 2);
+        // Right and left steering with mouse click or touch screens
+        direction = Mathf.Sign(Vector2.Dot(car.RigidbodyCar.velocity, car.RigidbodyCar.GetRelativeVector(Vector2.up)));
 
-    }
-
-    public void Win()
-    {
-        isDone = true;
-    }
-
-    public void Crashed()
-    {
-        car_speed = 0f;
-        steering_speed = 0f;
-        isDone = true;
-        isCrashed = true;
+        if (Input.GetMouseButton(0))
+        {
+            float middle = Screen.width / 2;
+            if(Input.mousePosition.x < middle)
+            {
+                total_steering = 1;
+            }
+            else
+            {
+                total_steering = -1;              
+            }
+            car.FireExhaust();
+            car.RigidbodyCar.rotation += total_steering * car.Steering_speed * car.RigidbodyCar.velocity.magnitude * direction;
+            car.RigidbodyCar.AddRelativeForce(-Vector2.right * car.RigidbodyCar.velocity.magnitude * total_steering / 2);     
+        }      
     }
 }

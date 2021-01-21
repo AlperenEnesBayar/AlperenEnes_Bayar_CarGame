@@ -8,7 +8,7 @@ public class obstacle_collide : MonoBehaviour
     {
         if (collision.CompareTag("Cars"))
         {
-            collision.GetComponent<car_movement>().Crashed();
+            collision.GetComponent<Cars>().Crashed();
         }
     }
 }

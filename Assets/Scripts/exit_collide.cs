@@ -8,8 +8,7 @@ public class exit_collide : MonoBehaviour
     {
         if (collision.CompareTag("Cars"))
         {
-            Debug.Log("Wow");
-            collision.GetComponent<car_movement>().Win();
+            collision.GetComponent<Cars>().ReachedExit();
         }
     }
 }
