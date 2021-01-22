@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
- 
-
+// Controls minimenu's Left Button's action
 public class minimenu_left_button : MonoBehaviour
 {
 

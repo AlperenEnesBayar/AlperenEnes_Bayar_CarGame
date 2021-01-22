@@ -358,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657955255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2924037, y: 1.1199999, z: -10}
+  m_LocalPosition: {x: -2.2897186, y: 1.1199999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -646,7 +646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mini_menu: {fileID: 692727408}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!212 &809594326
@@ -771,7 +770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mini_menu: {fileID: 692727408}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!212 &945578475
@@ -1727,6 +1725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5984580128928336730, guid: fdf02d1dc45f41742ace0655d890c198,
         type: 3}
+      propertyPath: mini_menu
+      value: 
+      objectReference: {fileID: 692727408}
+    - target: {fileID: 5984580128928336730, guid: fdf02d1dc45f41742ace0655d890c198,
+        type: 3}
       propertyPath: virtualCamera
       value: 
       objectReference: {fileID: 1601920047}
@@ -2078,7 +2081,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mini_menu: {fileID: 692727408}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!212 &2092443064
@@ -2203,7 +2205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mini_menu: {fileID: 692727408}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!212 &2095561509

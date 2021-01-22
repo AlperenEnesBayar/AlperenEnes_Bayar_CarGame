@@ -60,3 +60,6 @@ TagManager:
   - name: UI
     uniqueID: 3479223391
     locked: 0
+  - name: Upper UI
+    uniqueID: 2657700637
+    locked: 0

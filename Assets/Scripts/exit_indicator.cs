@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Indicator arrow's (car's child) movement script
-
 public class exit_indicator : MonoBehaviour
 {
     public game_manager gm;

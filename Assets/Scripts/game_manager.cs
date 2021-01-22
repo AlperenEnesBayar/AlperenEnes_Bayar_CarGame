@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// This is the main script that manage game flow.
 public class game_manager : MonoBehaviour
 {
 
@@ -45,9 +46,8 @@ public class game_manager : MonoBehaviour
     void Update()
     {     
         if (current_cars_script.IsDone)  // Checks is game ended
-        {
-            
-            if(current_cars_script.IsCrashed)  // If car crashed shows menu
+        {   
+            if(current_cars_script.IsCrashed)  // If car crashed, shows menu
             {
                 // Restart the game or go menu
                 mini_menu.SetBool("isOpen", true);
@@ -55,7 +55,7 @@ public class game_manager : MonoBehaviour
             }
             else // If not then, passes the next scenario
             {
-                if (current_scenario < 0) 
+                if (current_scenario < 7) 
                 {
                     // Passes the car's controls to PC
                     current_cars_script.TurnStartingPosition();
@@ -67,13 +67,11 @@ public class game_manager : MonoBehaviour
                 }
                 else
                 {
-                    if(Player.Instance.current_level < Player.Instance.Levels.Count - 1)
-                    {
-                        Player.Instance.current_level += 1;
-                        SceneManager.LoadScene("Level_" + (Player.Instance.current_level + 1).ToString());
-                    }
-                }
-                
+                    Player.Instance.Levels[Player.Instance.current_level] = true;
+                    Pause_The_Game();
+                    Player.Instance.SetLoose(false);
+                    mini_menu.SetBool("isOpen", true);
+                } 
             }
         }
     }
@@ -133,8 +131,10 @@ public class game_manager : MonoBehaviour
 
         foreach (var car in Cars)
         {
+            car.GetComponent<Cars>().UnFreeze();
             car.SetActive(false);
         }
+       
      
         episode_Timer.StopTimer();
     }
@@ -163,12 +163,18 @@ public class game_manager : MonoBehaviour
     // Self-Explanatory
     public void Pause_The_Game()
     {
-        current_cars_script.Freeze();
+        foreach (GameObject item in Cars)
+        {
+            item.GetComponent<Cars>().Freeze();
+        }
     }
 
     // Self-Explanatory
     public void Resume_The_Game()
     {
-        current_cars_script.UnFreeze();  
+        foreach (GameObject item in Cars)
+        {
+            item.GetComponent<Cars>().UnFreeze();
+        }
     }
 }

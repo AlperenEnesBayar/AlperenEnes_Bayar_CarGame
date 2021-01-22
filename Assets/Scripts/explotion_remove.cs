@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Explosion effect removal
 public class explotion_remove : MonoBehaviour
 {
     

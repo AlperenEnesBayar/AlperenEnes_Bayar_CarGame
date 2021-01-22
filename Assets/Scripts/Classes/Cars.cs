@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Keeps car object's all informations
 public class Cars : MonoBehaviour
 {
     Rigidbody2D rigidbodyCar; // Referance for car's rigidbody
@@ -16,7 +17,8 @@ public class Cars : MonoBehaviour
     private float steering_speed; 
     private bool isCrashed = false;
     private bool isDone = false;
-    private bool isNPC;
+    private bool isNPC = false;
+    private bool isFreeze = false;
     private RigidbodyConstraints2D originalConstraints; // For Pause|UnPause reasons
 
     private List<Vector3> savedPositions;
@@ -34,6 +36,7 @@ public class Cars : MonoBehaviour
     public Rigidbody2D RigidbodyCar { get => rigidbodyCar; set => rigidbodyCar = value; }
     public bool IsCrashed { get => isCrashed; set => isCrashed = value; }
     public bool IsDone { get => isDone; set => isDone = value; }
+    public bool IsFrezee { get => isFreeze; set => isFreeze = value; }
 
 
     void Start()
@@ -84,12 +87,14 @@ public class Cars : MonoBehaviour
     public void Freeze()
     {
         rigidbodyCar.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        isFreeze = true;
     }
 
     // Unfreezes the car
     public void UnFreeze()
     {
         rigidbodyCar.constraints = originalConstraints;
+        isFreeze = false;
     }
 
     // Starts particle effect
@@ -150,9 +155,5 @@ public class Cars : MonoBehaviour
     {
         savedTime += 1;
     }
-
-
-
-
 
 }

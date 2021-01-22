@@ -21,22 +21,31 @@ public class car_movement : MonoBehaviour
   
     void FixedUpdate()
     {
-        if(car.IsNPC())
+        if(car.IsNPC()) // If it's true, then car moves automaticly
         {
-            if(car.isActionRemain())
-            {
-                car.transform.position = car.ReturnPositionAtTime();
-                car.transform.rotation = car.ReturnRotationAtTime();
-                car.NextAction();
-            }
-            else
+            if(car.IsFrezee)
             {
                 car.Freeze();
             }
+            else
+            {
+                if (car.isActionRemain())
+                {
+                    car.transform.position = car.ReturnPositionAtTime();
+                    car.transform.rotation = car.ReturnRotationAtTime();
+                    car.NextAction();
+                }
+                else
+                {
+                    car.Freeze();
+                }
+            }
+            
         }
-        else
+        else  
         {
-            car.SaveAction(car.transform.position, car.transform.rotation);
+            if(!car.IsFrezee)
+                car.SaveAction(car.transform.position, car.transform.rotation);
 
             // Automatic drives front direction
             car.RigidbodyCar.AddRelativeForce(Vector2.up * car.Car_speed);
