@@ -10,6 +10,8 @@ public class exit_collide : MonoBehaviour
         if (collision.CompareTag("Cars"))
         {
             collision.GetComponent<Cars>().ReachedExit();
+
+            Player.Instance.SetRunning(false);
         }
     }
 }

@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -815743905
-  m_SortingLayer: 5
+  m_SortingLayerID: -1134667321
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5b242e8a0b7ec24497b314778718f72, type: 3}
   m_Color: {r: 0.42826056, g: 0.32280168, b: 0.735849, a: 1}
@@ -4960,8 +4960,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -815743905
-  m_SortingLayer: 5
+  m_SortingLayerID: -1134667321
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5b242e8a0b7ec24497b314778718f72, type: 3}
   m_Color: {r: 0.7075472, g: 0.4723911, b: 0.29036137, a: 1}
@@ -5158,6 +5158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exhaust: {fileID: 5342328656418713045}
+  starting_car_speed: 15
+  starting_steering_speed: 1
 --- !u!114 &4544318606993969278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5170,6 +5172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mini_menu: {fileID: 0}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!61 &5758471622307481511
@@ -29463,8 +29466,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -815743905
-  m_SortingLayer: 5
+  m_SortingLayerID: -1134667321
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5b242e8a0b7ec24497b314778718f72, type: 3}
   m_Color: {r: 0.7924528, g: 0.26539695, b: 0.26539695, a: 1}
@@ -29661,6 +29664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exhaust: {fileID: 5342328657655799343}
+  starting_car_speed: 15
+  starting_steering_speed: 1
 --- !u!114 &4007323781944271465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29673,6 +29678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mini_menu: {fileID: 0}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!61 &4958812911166270881
@@ -29885,6 +29891,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exhaust: {fileID: 5342328657675890370}
+  starting_car_speed: 15
+  starting_steering_speed: 1
 --- !u!114 &2092833040961820013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29897,6 +29905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mini_menu: {fileID: 0}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!61 &7948198238701471458
@@ -29992,8 +30001,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -815743905
-  m_SortingLayer: 5
+  m_SortingLayerID: -1134667321
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5b242e8a0b7ec24497b314778718f72, type: 3}
   m_Color: {r: 0.25640798, g: 0.8113208, b: 0.5471046, a: 1}
@@ -30111,8 +30120,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -815743905
-  m_SortingLayer: 5
+  m_SortingLayerID: -1134667321
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5b242e8a0b7ec24497b314778718f72, type: 3}
   m_Color: {r: 0.68272954, g: 0.31452474, b: 0.7169812, a: 1}
@@ -30309,6 +30318,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exhaust: {fileID: 5342328656302841823}
+  starting_car_speed: 15
+  starting_steering_speed: 1
 --- !u!114 &891885704730403365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30321,6 +30332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mini_menu: {fileID: 0}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!61 &176539670992211678
@@ -30486,6 +30498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exhaust: {fileID: 5342328656407659495}
+  starting_car_speed: 15
+  starting_steering_speed: 1
 --- !u!114 &3092340988423621004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30498,6 +30512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mini_menu: {fileID: 0}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!61 &541089217208765526
@@ -30593,8 +30608,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -815743905
-  m_SortingLayer: 5
+  m_SortingLayerID: -1134667321
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5b242e8a0b7ec24497b314778718f72, type: 3}
   m_Color: {r: 0.47032455, g: 0.8117647, b: 0.254902, a: 1}
@@ -30745,6 +30760,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exhaust: {fileID: 5342328656120616565}
+  starting_car_speed: 15
+  starting_steering_speed: 1
 --- !u!114 &3105894741553738304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30757,6 +30774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mini_menu: {fileID: 0}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!61 &6926970254034234783
@@ -40593,6 +40611,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exhaust: {fileID: 5342328655768305069}
+  starting_car_speed: 15
+  starting_steering_speed: 1
 --- !u!114 &249531811569038208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40605,6 +40625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mini_menu: {fileID: 0}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!61 &3546506437815513084
@@ -40700,8 +40721,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -815743905
-  m_SortingLayer: 5
+  m_SortingLayerID: -1134667321
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5b242e8a0b7ec24497b314778718f72, type: 3}
   m_Color: {r: 0.32395872, g: 0.37182078, b: 0.754717, a: 1}
@@ -40852,6 +40873,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exhaust: {fileID: 5342328656477122666}
+  starting_car_speed: 15
+  starting_steering_speed: 1
 --- !u!114 &635870630312980668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40864,6 +40887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cc53f3181a38845b3ff3b4327c370d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mini_menu: {fileID: 0}
   explosion: {fileID: 4559261010850206591, guid: 038bcd682fc6bdf48823aaa21cfac5c3,
     type: 3}
 --- !u!61 &2607157277868012454
@@ -40959,8 +40983,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -815743905
-  m_SortingLayer: 5
+  m_SortingLayerID: -1134667321
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5b242e8a0b7ec24497b314778718f72, type: 3}
   m_Color: {r: 0.8396226, g: 0.73429054, b: 0.34456214, a: 1}

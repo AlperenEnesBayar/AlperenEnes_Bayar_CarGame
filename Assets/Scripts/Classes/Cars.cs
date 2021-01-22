@@ -9,10 +9,11 @@ public class Cars : MonoBehaviour
     private ParticleSystem exhaust;
     
 
-    private float starting_car_speed = 15f; // Car's frontal speed
-    private float starting_steering_speed = 1f; // Car's steering speed
-    private float car_speed; // Car's frontal speed
-    private float steering_speed; // Car's steering speed
+    public float starting_car_speed = 15f; // Car's frontal speed
+    public float starting_steering_speed = 1f; // Car's steering speed
+
+    private float car_speed; 
+    private float steering_speed; 
     private bool isCrashed = false;
     private bool isDone = false;
     private bool isNPC;
@@ -75,6 +76,7 @@ public class Cars : MonoBehaviour
     // Self-Explanatory
     public void setNPC(bool npc)
     {
+        
         isNPC = npc;
     }
 

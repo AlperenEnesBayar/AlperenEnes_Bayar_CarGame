@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.SceneManagement;
 
 public class game_manager : MonoBehaviour
 {
@@ -27,6 +26,7 @@ public class game_manager : MonoBehaviour
     count_down_controller count_Down_Controller;
     [Tooltip("Counter for Replay")]
     public episode_timer episode_Timer;
+    public Animator mini_menu;
 
     // Current Scenario's informations
     int current_scenario = 0;
@@ -50,12 +50,12 @@ public class game_manager : MonoBehaviour
             if(current_cars_script.IsCrashed)  // If car crashed shows menu
             {
                 // Restart the game or go menu
-                
+                mini_menu.SetBool("isOpen", true);
 
             }
             else // If not then, passes the next scenario
             {
-                if (current_scenario < 8) 
+                if (current_scenario < 0) 
                 {
                     // Passes the car's controls to PC
                     current_cars_script.TurnStartingPosition();
@@ -67,7 +67,11 @@ public class game_manager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("You Win"); 
+                    if(Player.Instance.current_level < Player.Instance.Levels.Count - 1)
+                    {
+                        Player.Instance.current_level += 1;
+                        SceneManager.LoadScene("Level_" + (Player.Instance.current_level + 1).ToString());
+                    }
                 }
                 
             }
@@ -77,6 +81,9 @@ public class game_manager : MonoBehaviour
     void Start_Scenario()
     {
         Close_Everything();  // Restarts Everything
+
+        // Set Player running true
+        Player.Instance.SetRunning(true);
 
         // Inıtilize the current variables
         current_entrance = Entrences[current_scenario];
@@ -136,17 +143,15 @@ public class game_manager : MonoBehaviour
     public Transform ReturnExitsTransformByCar(string Car)
     {
         int index = 0;
-
         foreach (GameObject item in Cars)
         {
-            if(item.name == Car)
+            if (item.name == Car)
             {
                 return Exits[index].transform;
             }
             index += 1;
         }
-
-        return null;
+        return Exits[0].transform; ;
     }
 
     // Self-Explanatory
