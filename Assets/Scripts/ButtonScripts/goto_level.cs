@@ -9,7 +9,7 @@ public class goto_level : MonoBehaviour
     public int level = 1; // Selected scene
     public GameObject cross;
 
-    private void Start()
+    private void Update()
     {
         if (Player.Instance.Levels[level - 1])
         {
