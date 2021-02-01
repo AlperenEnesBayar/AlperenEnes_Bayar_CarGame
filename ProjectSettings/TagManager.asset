@@ -48,8 +48,11 @@ TagManager:
   - name: Background
     uniqueID: 1246591935
     locked: 0
-  - name: UpperBackground
+  - name: Roads
     uniqueID: 3595603153
+    locked: 0
+  - name: Buildings
+    uniqueID: 3265997139
     locked: 0
   - name: Obstacles
     uniqueID: 2735596373

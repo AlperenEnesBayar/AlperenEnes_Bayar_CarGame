@@ -94,6 +94,7 @@ public class game_manager : MonoBehaviour
         
         // Activates the current car and spawn in start point
         current_car.transform.position = current_entrance.transform.position;
+        current_car.transform.rotation = current_entrance.transform.rotation;
         current_car.SetActive(true);
         current_cars_script = current_car.GetComponent<Cars>();
 
